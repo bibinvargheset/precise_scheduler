@@ -820,7 +820,7 @@ def run_pending() -> None:
 
 def run_all(delay_seconds: int = 0) -> None:
     """Calls :meth:`run_all <Scheduler.run_all>` on the
-    :data:`default scheduler instance <default_scheduler>`.
+    :data:`default scheduler instance <default_scheduler>`.  
     """
     default_scheduler.run_all(delay_seconds=delay_seconds)
 
