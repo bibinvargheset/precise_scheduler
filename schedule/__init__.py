@@ -259,7 +259,7 @@ class Job(object):
         self.cancel_after: Optional[datetime.datetime] = None
 
         self.tags: Set[Hashable] = set()  # unique set of tags for the job
-        self.scheduler: Optional[Scheduler] = scheduler  # scheduler to register with
+        self.scheduler = scheduler  # scheduler to register with
 
     def __lt__(self, other) -> bool:
         """
