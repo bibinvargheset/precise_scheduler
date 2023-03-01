@@ -471,7 +471,7 @@ class Job(object):
         self.tags.update(tags)
         return self
 
-    def at(self, time_str: str, tz: str = None):
+    def at(self, time_str: str, tz:  Optional[str] = None):
 
         """
         Specify a particular time that the job should be run at.
