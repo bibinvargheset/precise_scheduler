@@ -206,7 +206,7 @@ class Scheduler(object):
         return (self.next_run - datetime.datetime.now()).total_seconds()
 
 
-pyscheduler = Scheduler()
+pysched = Scheduler()
 
 
 class Job(object):
@@ -227,7 +227,7 @@ class Job(object):
     method, which also defines its `interval`.
     """
 
-    def __init__(self, interval: int, scheduler = pyscheduler):
+    def __init__(self, interval: int, scheduler=pysched):
 
         self.last_schedule: Optional[datetime.time] = None
         self.interval: int = interval  # pause interval * unit between runs
