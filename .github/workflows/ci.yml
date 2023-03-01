@@ -2,8 +2,6 @@ name: Tests
 
 on:
   push:
-    branches:
-      - master
   pull_request:
     branches:
       - master
@@ -14,7 +12,7 @@ jobs:
     strategy:
       max-parallel: 6
       matrix:
-        python-version: [3.6, 3.7, 3.8, 3.9]
+        python-version: [ 3.7, 3.8, 3.9,"3.10", 3.11]
     steps:
       - uses: actions/checkout@v2
       - name: Set up Python ${{ matrix.python-version }}
@@ -40,10 +38,10 @@ jobs:
     needs: test
     runs-on: ubuntu-latest
     steps:
-      - name: Set up Python 3.8
+      - name: Set up Python "3.10"
         uses: actions/setup-python@v2
         with:
-          python-version: 3.8
+          python-version: "3.10"
       - name: Finished
         run: |
           pip3 install coveralls
@@ -55,10 +53,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - name: Set up Python 3.8
+      - name: Set up Python "3.10"
         uses: actions/setup-python@v2
         with:
-          python-version: 3.8
+          python-version: "3.10"
       - name: Install dependencies
         run: pip install tox
       - name: Check docs
@@ -68,10 +66,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - name: Set up Python 3.8
+      - name: Set up Python "3.10"
         uses: actions/setup-python@v2
         with:
-          python-version: 3.8
+          python-version: "3.10"
       - name: Install dependencies
         run: pip install tox
       - name: Check formatting
@@ -81,10 +79,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - name: Set up Python 3.8
+      - name: Set up Python "3.10"
         uses: actions/setup-python@v2
         with:
-          python-version: 3.8
+          python-version: "3.10"
       - name: Install dependencies
         run: pip install tox
       - name: Check docs
