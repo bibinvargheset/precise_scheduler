@@ -82,7 +82,7 @@ class Scheduler(object):
     handle their execution.
     """
 
-    def __init__(self, schedule_base: str = 'last_run_end') -> None:
+    def __init__(self, schedule_base: str = "last_run_end") -> None:
         self.jobs: List[Job] = []
         self.schedule_base = schedule_base
 
@@ -175,7 +175,7 @@ class Scheduler(object):
             self.cancel_job(job)
 
     def get_next_run(
-            self, tag: Optional[Hashable] = None
+        self, tag: Optional[Hashable] = None
     ) -> Optional[datetime.datetime]:
         """
         Datetime when the next job should run.
@@ -228,7 +228,6 @@ class Job(object):
     """
 
     def __init__(self, interval: int, scheduler=pysched):
-
         self.last_schedule: Optional[datetime.time] = None
         self.interval: int = interval  # pause interval * unit between runs
         self.latest: Optional[int] = None  # upper limit to the interval
@@ -315,9 +314,9 @@ class Job(object):
             )
         else:
             fmt = (
-                    "Every %(interval)s "
-                    + ("to %(latest)s " if self.latest is not None else "")
-                    + "%(unit)s do %(call_repr)s %(timestats)s"
+                "Every %(interval)s "
+                + ("to %(latest)s " if self.latest is not None else "")
+                + "%(unit)s do %(call_repr)s %(timestats)s"
             )
 
             return fmt % dict(
@@ -475,7 +474,6 @@ class Job(object):
         return self
 
     def at(self, time_str: str, tz: Optional[str] = None):
-
         """
         Specify a particular time that the job should be run at.
 
@@ -581,8 +579,8 @@ class Job(object):
         return self
 
     def until(
-            self,
-            until_time: Union[datetime.datetime, datetime.timedelta, datetime.time, str],
+        self,
+        until_time: Union[datetime.datetime, datetime.timedelta, datetime.time, str],
     ):
         """
         Schedule job to run until the specified moment.
@@ -725,11 +723,11 @@ class Job(object):
 
         self.period = datetime.timedelta(**{self.unit: interval})
         base_time = datetime.datetime.now()
-        if getattr(self, 'scheduler') is not None:
-            if self.scheduler.schedule_base == 'last_run_start':
-                base_time = getattr(self, 'last_run_start', datetime.datetime.now())
-            elif self.scheduler.schedule_base == 'last_schedule':
-                base_time = getattr(self, 'last_schedule', datetime.datetime.now())
+        if getattr(self, "scheduler") is not None:
+            if self.scheduler.schedule_base == "last_run_start":
+                base_time = getattr(self, "last_run_start", datetime.datetime.now())
+            elif self.scheduler.schedule_base == "last_schedule":
+                base_time = getattr(self, "last_schedule", datetime.datetime.now())
         self.next_run = base_time + self.period
         while self.next_run < datetime.datetime.now():
             self.next_run = base_time + self.period
@@ -779,17 +777,17 @@ class Job(object):
             if not self.last_run or (self.next_run - self.last_run) > self.period:
                 now = datetime.datetime.now()
                 if (
-                        self.unit == "days"
-                        and self.at_time > now.time()
-                        and self.interval == 1
+                    self.unit == "days"
+                    and self.at_time > now.time()
+                    and self.interval == 1
                 ):
                     self.next_run = self.next_run - datetime.timedelta(days=1)
                 elif self.unit == "hours" and (
-                        self.at_time.minute > now.minute
-                        or (
-                                self.at_time.minute == now.minute
-                                and self.at_time.second > now.second
-                        )
+                    self.at_time.minute > now.minute
+                    or (
+                        self.at_time.minute == now.minute
+                        and self.at_time.second > now.second
+                    )
                 ):
                     self.next_run = self.next_run - datetime.timedelta(hours=1)
                 elif self.unit == "minutes" and self.at_time.second > now.second:
@@ -804,7 +802,7 @@ class Job(object):
         return self.cancel_after is not None and when > self.cancel_after
 
     def _decode_datetimestr(
-            self, datetime_str: str, formats: List[str]
+        self, datetime_str: str, formats: List[str]
     ) -> Optional[datetime.datetime]:
         for f in formats:
             try:
