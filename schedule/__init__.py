@@ -722,7 +722,7 @@ class Job(object):
 
         self.period = datetime.timedelta(**{self.unit: interval})
         base_time = datetime.datetime.now()
-        if getattr(self, 'scheduler'):
+        if getattr(self, 'scheduler') is not None:
             if self.scheduler.schedule_base == 'last_run_start':
                 base_time = getattr(self, 'last_run_start', datetime.datetime.now())
             elif self.scheduler.schedule_base == 'last_schedule':
