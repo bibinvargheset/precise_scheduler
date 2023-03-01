@@ -227,7 +227,7 @@ class Job(object):
     method, which also defines its `interval`.
     """
 
-    def __init__(self, interval: int, scheduler: Optional[Scheduler] = pyscheduler):
+    def __init__(self, interval: int, scheduler = pyscheduler):
 
         self.last_schedule: Optional[datetime.time] = None
         self.interval: int = interval  # pause interval * unit between runs
