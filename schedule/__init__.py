@@ -206,6 +206,9 @@ class Scheduler(object):
         return (self.next_run - datetime.datetime.now()).total_seconds()
 
 
+pyscheduler = Scheduler()
+
+
 class Job(object):
     """
     A periodic job as used by :class:`Scheduler`.
@@ -224,7 +227,7 @@ class Job(object):
     method, which also defines its `interval`.
     """
 
-    def __init__(self, interval: int, scheduler:  Optional[Scheduler] = None):
+    def __init__(self, interval: int, scheduler: Optional[Scheduler] = pyscheduler):
 
         self.last_schedule: Optional[datetime.time] = None
         self.interval: int = interval  # pause interval * unit between runs
@@ -471,7 +474,7 @@ class Job(object):
         self.tags.update(tags)
         return self
 
-    def at(self, time_str: str, tz:  Optional[str] = None):
+    def at(self, time_str: str, tz: Optional[str] = None):
 
         """
         Specify a particular time that the job should be run at.
