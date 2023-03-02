@@ -1,15 +1,6 @@
-`schedule <https://schedule.readthedocs.io/>`__
-===============================================
+`Precise_scheduler <https://schedule.readthedocs.io/>`__
+=========================================================
 
-
-.. image:: https://github.com/dbader/schedule/workflows/Tests/badge.svg
-        :target: https://github.com/dbader/schedule/actions?query=workflow%3ATests+branch%3Amaster
-
-.. image:: https://coveralls.io/repos/dbader/schedule/badge.svg?branch=master
-        :target: https://coveralls.io/r/dbader/schedule
-
-.. image:: https://img.shields.io/pypi/v/schedule.svg
-        :target: https://pypi.python.org/pypi/schedule
 
 Python job scheduling for humans. Run Python functions (or any other callable) periodically using a friendly syntax.
 
@@ -17,41 +8,77 @@ Python job scheduling for humans. Run Python functions (or any other callable) p
 - In-process scheduler for periodic jobs. No extra processes needed!
 - Very lightweight and no external dependencies.
 - Excellent test coverage.
-- Tested on Python and 3.6, 3.7, 3.8, 3.9
 
 Usage
 -----
 
 .. code-block:: bash
 
-    $ pip install schedule
+    $ pip install precise-scheduler
 
 .. code-block:: python
 
+    import datetime
     import schedule
     import time
+    import pause
 
-    def job():
-        print("I'm working...")
-    
-    schedule.every(10).seconds.do(job)
-    schedule.every(10).minutes.do(job)
-    schedule.every().hour.do(job)
-    schedule.every().day.at("10:30").do(job)
-    schedule.every(5).to(10).minutes.do(job)
-    schedule.every().monday.do(job)
-    schedule.every().wednesday.at("13:15").do(job)
-    schedule.every().day.at("12:42", "Europe/Amsterdam").do(job)
-    schedule.every().minute.at(":17").do(job)
+    scheduler = schedule.Scheduler(schedule_base="last_schedule")
+    #scheduler = schedule.Scheduler(schedule_base="last_run_start")
+    #scheduler = schedule.Scheduler()
 
-    def job_with_argument(name):
-        print(f"I am {name}")
-        
-    schedule.every(10).seconds.do(job_with_argument, name="Peter")
-        
-    while True:
-        schedule.run_pending()
+
+    def greet(name):
+        print("Hello", name, datetime.datetime.now())
         time.sleep(1)
+
+
+    scheduler.every(2).seconds.do(greet, name="Alice")
+    scheduler.every(4).seconds.do(greet, name="Bob")
+
+    from schedule import every, repeat
+
+
+    @repeat(scheduler.every(5).seconds, "World")
+    @repeat(scheduler.every().day, "Mars")
+    def hello(planet):
+        print("Hello", planet, datetime.datetime.now())
+        time.sleep(0.5)
+
+
+    while True:
+        pause.until(scheduler.get_next_run())
+        scheduler.run_pending()
+
+    # Hello Alice 2023-03-02 12:24:31.000249
+    # Hello Alice 2023-03-02 12:24:33.000094
+    # Hello Bob 2023-03-02 12:24:34.001463
+    # Hello World 2023-03-02 12:24:35.003073
+    # Hello Alice 2023-03-02 12:24:35.503961
+    # Hello Alice 2023-03-02 12:24:37.000157
+    # Hello Bob 2023-03-02 12:24:38.001703
+    # Hello Alice 2023-03-02 12:24:39.003366
+    # Hello World 2023-03-02 12:24:40.004778
+    # Hello Alice 2023-03-02 12:24:41.000172
+
+
+Background
+----------
+
+This package is a slight improvement of https://github.com/dbader/schedule
+
+The changes are
+
+- Previously the calculation of next schedule was based on end of execution. Now you can also select based on start of last execution start or based on schedule (will be same unless you have a on demand execution).
+
+- All schedules will be truncated to 0 microseconds.
+
+- The code is updated to newer Pep requirements
+
+The  reason for starting this package is the above updates are really needed and the package has not being updated for long and is under MIT licence.
+
+For now the documentation remains the same only difference is mentioned below in code example and you can check out examples folder for python files
+
 
 Documentation
 -------------
@@ -62,10 +89,12 @@ Schedule's documentation lives at `schedule.readthedocs.io <https://schedule.rea
 Meta
 ----
 
-Daniel Bader - `@dbader_org <https://twitter.com/dbader_org>`_ - mail@dbader.org
+Bibin Varghese - `@bibinvargheset <https://twitter.com/dbader_org>`_ - bibinvargheset@gmail.com
+
+This package is a based on https://github.com/dbader/schedule
 
 Inspired by `Adam Wiggins' <https://github.com/adamwiggins>`_ article `"Rethinking Cron" <https://adam.herokuapp.com/past/2010/4/13/rethinking_cron/>`_ and the `clockwork <https://github.com/Rykian/clockwork>`_ Ruby module.
 
-Distributed under the MIT license. See `LICENSE.txt <https://github.com/dbader/schedule/blob/master/LICENSE.txt>`_ for more information.
+Distributed under the MIT license. See `LICENSE.txt <https://github.com/bibinvargheset/precise_scheduler/blob/master/LICENSE.txt>`_ for more information.
 
-https://github.com/dbader/schedule
+https://github.com/bibinvargheset/precise_scheduler

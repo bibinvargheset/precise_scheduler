@@ -15,7 +15,6 @@ Features:
     - A simple to use API for scheduling jobs.
     - Very lightweight and no external dependencies.
     - Excellent test coverage.
-    - Tested on Python 3.6, 3.7, 3.8, 3.9
 
 Usage:
     >>> import schedule
@@ -722,15 +721,19 @@ class Job(object):
             interval = self.interval
 
         self.period = datetime.timedelta(**{self.unit: interval})
-        base_time = datetime.datetime.now()
+        base_time = None
         if getattr(self, "scheduler") is not None:
             if self.scheduler.schedule_base == "last_run_start":
                 base_time = getattr(self, "last_run_start", datetime.datetime.now())
+                self.next_run = base_time + self.period
             elif self.scheduler.schedule_base == "last_schedule":
                 base_time = getattr(self, "last_schedule", datetime.datetime.now())
-        self.next_run = base_time + self.period
+        base_time = datetime.datetime.now() if base_time is None else base_time
+        self.next_run = (
+            base_time + self.period if self.next_run is None else self.next_run
+        )
         while self.next_run < datetime.datetime.now():
-            self.next_run = base_time + self.period
+            self.next_run = self.next_run + self.period
         if self.start_day is not None:
             if self.unit != "weeks":
                 raise ScheduleValueError("`unit` should be 'weeks'")
