@@ -732,7 +732,7 @@ class Job(object):
         self.next_run = (
             base_time + self.period if self.next_run is None else self.next_run
         )
-        while self.next_run < datetime.datetime.now():
+        while self.next_run <= datetime.datetime.now():
             self.next_run = self.next_run + self.period
         if self.start_day is not None:
             if self.unit != "weeks":
