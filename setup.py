@@ -2,7 +2,7 @@ import codecs
 from setuptools import setup
 
 
-precise_scheduler_VERSION = "1.1.2"
+precise_scheduler_VERSION = "2.0.0b"
 # pyscheduler_DOWNLOAD_URL = (
 #     "https://github.com/dbader/pyscheduler/tarball/" + pyscheduler_VERSION
 # )
@@ -19,7 +19,7 @@ def read_file(filename):
 
 setup(
     name="precise_scheduler",
-    packages=["schedule"],
+    packages=["precise_scheduler"],
     package_data={"precise_scheduler": ["py.typed"]},
     version=precise_scheduler_VERSION,
     description="Job scheduling for humans.",

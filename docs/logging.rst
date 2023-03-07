@@ -6,30 +6,30 @@ To receive logs from Schedule, set the logging level to ``DEBUG``.
 
 .. code-block:: python
 
-    import schedule
+    import precise_scheduler
     import logging
 
     logging.basicConfig()
-    schedule_logger = logging.getLogger('schedule')
-    schedule_logger.setLevel(level=logging.DEBUG)
+    precise_scheduler_logger = logging.getLogger('precise_scheduler')
+    precise_scheduler_logger.setLevel(level=logging.DEBUG)
 
     def job():
         print("Hello, Logs")
 
-    schedule.every().second.do(job)
+    precise_scheduler.every().second.do(job)
 
-    schedule.run_all()
+    precise_scheduler.run_all()
 
-    schedule.clear()
+    precise_scheduler.clear()
 
 This will result in the following log messages:
 
 .. code-block:: text
 
-    DEBUG:schedule:Running *all* 1 jobs with 0s delay in between
-    DEBUG:schedule:Running job Job(interval=1, unit=seconds, do=job, args=(), kwargs={})
+    DEBUG:precise_scheduler:Running *all* 1 jobs with 0s delay in between
+    DEBUG:precise_scheduler:Running job Job(interval=1, unit=seconds, do=job, args=(), kwargs={})
     Hello, Logs
-    DEBUG:schedule:Deleting *all* jobs
+    DEBUG:precise_scheduler:Deleting *all* jobs
 
 
 Customize logging
@@ -41,7 +41,7 @@ As an example, below code adds the ``print_elapsed_time`` decorator:
 
     import functools
     import time
-    import schedule
+    import precise_scheduler
 
     # This decorator can be applied to any job function to log the elapsed time of each job
     def print_elapsed_time(func):
@@ -61,9 +61,9 @@ As an example, below code adds the ``print_elapsed_time`` decorator:
         print('Hello, Logs')
         time.sleep(5)
 
-    schedule.every().second.do(job)
+    precise_scheduler.every().second.do(job)
 
-    schedule.run_all()
+    precise_scheduler.run_all()
 
 This outputs:
 

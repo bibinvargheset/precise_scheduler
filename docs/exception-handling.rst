@@ -1,7 +1,7 @@
 Exception Handling
 ##################
 
-Schedule doesn't catch exceptions that happen during job execution. Therefore any exceptions thrown during job execution will bubble up and interrupt schedule's run_xyz function.
+precise_scheduler doesn't catch exceptions that happen during job execution. Therefore any exceptions thrown during job execution will bubble up and interrupt precise_scheduler's run_xyz function.
 
 If you want to guard against exceptions you can wrap your job function
 in a decorator like this:
@@ -20,7 +20,7 @@ in a decorator like this:
                     import traceback
                     print(traceback.format_exc())
                     if cancel_on_failure:
-                        return schedule.CancelJob
+                        return precise_scheduler.CancelJob
             return wrapper
         return catch_exceptions_decorator
 
@@ -28,6 +28,6 @@ in a decorator like this:
     def bad_task():
         return 1 / 0
 
-    schedule.every(5).minutes.do(bad_task)
+    precise_scheduler.every(5).minutes.do(bad_task)
 
-Another option would be to subclass Schedule like @mplewis did in `this example <https://gist.github.com/mplewis/8483f1c24f2d6259aef6>`_.
+Another option would be to subclass precise_scheduler like @mplewis did in `this example <https://gist.github.com/mplewis/8483f1c24f2d6259aef6>`_.

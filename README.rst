@@ -18,14 +18,15 @@ Usage
 
 .. code-block:: python
 
+
     import datetime
-    import schedule
+    import precise_scheduler
     import time
     import pause
 
-    scheduler = schedule.Scheduler(schedule_base="last_schedule")
-    #scheduler = schedule.Scheduler(schedule_base="last_run_start")
-    #scheduler = schedule.Scheduler()
+    scheduler = precise_scheduler.Scheduler(schedule_base="last_schedule")
+    #scheduler = precise_scheduler.Scheduler(schedule_base="last_run_start")
+    #scheduler = precise_scheduler.Scheduler()
 
 
     def greet(name):
@@ -83,18 +84,18 @@ For now the documentation remains the same only difference is mentioned below in
 Documentation
 -------------
 
-Schedule's documentation lives at `schedule.readthedocs.io <https://schedule.readthedocs.io/>`_.
+precise_scheduler's documentation lives at `precise_scheduler.readthedocs.io <https://precise_scheduler.readthedocs.io/>`_.
 
 
 Meta
 ----
 
-Bibin Varghese - `@bibinvargheset <https://twitter.com/dbader_org>`_ - bibinvargheset@gmail.com
+Bibin Varghese - `@bibinvargheset <https://twitter.com/bibinvargheset>`_ - bibinvargheset@gmail.com
 
 This package is a based on https://github.com/dbader/schedule
 
 Inspired by `Adam Wiggins' <https://github.com/adamwiggins>`_ article `"Rethinking Cron" <https://adam.herokuapp.com/past/2010/4/13/rethinking_cron/>`_ and the `clockwork <https://github.com/Rykian/clockwork>`_ Ruby module.
 
-Distributed under the MIT license. See `LICENSE.txt <https://github.com/bibinvargheset/precise_scheduler/blob/master/LICENSE.txt>`_ for more information.
+Distributed under the MIT license. See `LICENSE.txt <https://github.com/bibinvargheset/precise_scheduler/LICENSE.txt>`_ for more information.
 
 https://github.com/bibinvargheset/precise_scheduler

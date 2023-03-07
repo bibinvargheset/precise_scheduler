@@ -11,7 +11,7 @@ You can work around this limitation by running each of the jobs in its own threa
 
     import threading
     import time
-    import schedule
+    import precise_scheduler
 
     def job():
         print("I'm running on thread %s" % threading.current_thread())
@@ -20,15 +20,15 @@ You can work around this limitation by running each of the jobs in its own threa
         job_thread = threading.Thread(target=job_func)
         job_thread.start()
 
-    schedule.every(10).seconds.do(run_threaded, job)
-    schedule.every(10).seconds.do(run_threaded, job)
-    schedule.every(10).seconds.do(run_threaded, job)
-    schedule.every(10).seconds.do(run_threaded, job)
-    schedule.every(10).seconds.do(run_threaded, job)
+    precise_scheduler.every(10).seconds.do(run_threaded, job)
+    precise_scheduler.every(10).seconds.do(run_threaded, job)
+    precise_scheduler.every(10).seconds.do(run_threaded, job)
+    precise_scheduler.every(10).seconds.do(run_threaded, job)
+    precise_scheduler.every(10).seconds.do(run_threaded, job)
 
 
     while 1:
-        schedule.run_pending()
+        precise_scheduler.run_pending()
         time.sleep(1)
 
 If you want tighter control on the number of threads use a shared jobqueue and one or more worker threads:
@@ -52,17 +52,17 @@ If you want tighter control on the number of threads use a shared jobqueue and o
 
     jobqueue = queue.Queue()
 
-    schedule.every(10).seconds.do(jobqueue.put, job)
-    schedule.every(10).seconds.do(jobqueue.put, job)
-    schedule.every(10).seconds.do(jobqueue.put, job)
-    schedule.every(10).seconds.do(jobqueue.put, job)
-    schedule.every(10).seconds.do(jobqueue.put, job)
+    precise_scheduler.every(10).seconds.do(jobqueue.put, job)
+    precise_scheduler.every(10).seconds.do(jobqueue.put, job)
+    precise_scheduler.every(10).seconds.do(jobqueue.put, job)
+    precise_scheduler.every(10).seconds.do(jobqueue.put, job)
+    precise_scheduler.every(10).seconds.do(jobqueue.put, job)
 
     worker_thread = threading.Thread(target=worker_main)
     worker_thread.start()
 
     while 1:
-        schedule.run_pending()
+        precise_scheduler.run_pending()
         time.sleep(1)
 
 This model also makes sense for a distributed application where the workers are separate processes that receive jobs from a distributed work queue. I like using beanstalkd with the beanstalkc Python library.

@@ -2,6 +2,12 @@
 
 History
 -------
+2.0.0b  (2023-03-07)
+++++++++++++++++++
+- Added option to base schedule on last run start , last schedule and last run completion(default and previous version method)
+- All schedules now will be truncated to 0 microseconds so the execution
+- New package name precise-scheduler is currently backwards compactable and if needed can be imported as scheduler in existing code
+- All checks for newer version of python is updated and code updated to new standards
 
 1.1.0 (2021-04-09)
 ++++++++++++++++++
