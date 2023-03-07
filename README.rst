@@ -37,7 +37,7 @@ Usage
     scheduler.every(2).seconds.do(greet, name="Alice")
     scheduler.every(4).seconds.do(greet, name="Bob")
 
-    from schedule import every, repeat
+    from precise_scheduler import every, repeat
 
 
     @repeat(scheduler.every(5).seconds, "World")
