@@ -50,7 +50,7 @@ Pytz is a required dependency when working with timezones.
 To resolve this issue, install the ``pytz`` module by running ``pip install pytz``.
 
 Does precise_scheduler support time zones?
----------------------------------
+------------------------------------------
 Yes! See :doc:`Timezones <timezones>`.
 
 What if my task throws an exception?
