@@ -1,5 +1,5 @@
 `Precise_scheduler <https://precise-scheduler.readthedocs.io/>`__
-=========================================================
+==================================================================
 
 
 Python job scheduling for humans. Run Python functions (or any other callable) periodically using a friendly syntax.
