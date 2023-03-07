@@ -193,11 +193,10 @@ To remove all jobs from the scheduler, use ``precise_scheduler.clear()``
         # [Every 1 second do greet(name='Harry') (last run: 2023-03-07 14:12:51, next run: 2023-03-07 14:12:52), Every 2 seconds do greet(name='Alice') (last run: 2023-03-07 14:12:51, next run: 2023-03-07 14:12:53), Every 1 minute do greet(name='Bob') (last run: 2023-03-07 14:12:51, next run: 2023-03-07 14:13:51), Every 1 hour do greet(name='Sam') (last run: 2023-03-07 14:12:51, next run: 2023-03-07 15:12:51)]
         # []
 
+Get several jobs, filtered by tags
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Cancel several jobs, filtered by tags
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-You can cancel the scheduling of a group of jobs selecting them by a unique identifier.
+You can retrieve a group of jobs from the scheduler, selecting them by a unique identifier.
 
 .. code-block:: python
 
@@ -211,13 +210,11 @@ You can cancel the scheduling of a group of jobs selecting them by a unique iden
     precise_scheduler.every().hour.do(greet, 'Monica').tag('hourly-tasks', 'customer')
     precise_scheduler.every().day.do(greet, 'Derek').tag('daily-tasks', 'guest')
 
-    print(precise_scheduler.get_jobs())
-    precise_scheduler.clear("daily-tasks")
-    print(precise_scheduler.get_jobs())
-    # [Every 1 day do greet('Andrea') (last run: [never], next run: 2023-03-08 14:34:01), Every 1 hour do greet('John') (last run: [never], next run: 2023-03-07 15:34:01), Every 1 hour do greet('Monica') (last run: [never], next run: 2023-03-07 15:34:01), Every 1 day do greet('Derek') (last run: [never], next run: 2023-03-08 14:34:01)]
-    # [Every 1 hour do greet('John') (last run: [never], next run: 2023-03-07 15:34:01), Every 1 hour do greet('Monica') (last run: [never], next run: 2023-03-07 15:34:01)]
+    friends = precise_scheduler.get_jobs('friend')
+    print(friends)
 
-    Will prevent every job tagged as ``daily-tasks`` from running again.
+Will return a list of every job tagged as ``friend``.
+
 
 
 Run a job at random intervals
