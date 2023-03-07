@@ -20,7 +20,7 @@ Make sure you don't have a ``precise_scheduler.py`` file in your project that ov
 
 
 ModuleNotFoundError: No module named 'precise_scheduler'
------------------------------------------------
+---------------------------------------------------------
 
 It seems python can't find the precise_scheduler package. Let's check some common causes.
 
