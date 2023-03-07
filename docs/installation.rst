@@ -43,6 +43,6 @@ If you don't have access to a package manager or need more control, you can manu
 This is easy as the schedule library consists of a single sourcefile MIT licenced.
 However, this method is highly discouraged as you won't receive automatic updates.
 
-1. Go to the `Github repo <https://github.com/bibinvargheset/precise_scheduler`_.
-2. Open file `schedule/__init__.py` and copy the code.
+1. Go to the `Github repo <https://github.com/bibinvargheset/precise_scheduler`>.
+2. Open file `precise_scheduler/__init__.py` and copy the code.
 3. In your project, create a packaged named `schedule` and paste the code in a file named `__init__.py`.
