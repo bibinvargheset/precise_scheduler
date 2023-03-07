@@ -62,6 +62,7 @@ Usage
     # Hello World 2023-03-02 12:24:40.004778
     # Hello Alice 2023-03-02 12:24:41.000172
 
+More :doc:`examples`
 
 Background
 ----------
@@ -85,6 +86,39 @@ Documentation
 -------------
 
 precise_scheduler's documentation lives at `precise_scheduler.readthedocs.io <https://precise_scheduler.readthedocs.io/>`_.
+To guarantee a stable execution schedule you need to move long-running jobs off the main-thread (where the scheduler runs).
+See :doc:`parallel-execution` for a sample implementation.
+
+
+Read More
+---------
+.. toctree::
+   :maxdepth: 2
+
+   installation
+   examples
+   background-execution
+   parallel-execution
+   timezones
+   exception-handling
+   logging
+   multiple-schedulers
+   faq
+   reference
+   development
+
+.. toctree::
+   :maxdepth: 1
+
+   changelog
+
+
+
+Issues
+------
+
+If you encounter any problems, please `file an issue <https://github.com/bibinvargheset/precise_scheduler/issues>`_ along with a detailed description.
+Please also use the search feature in the issue tracker beforehand to avoid creating duplicates. Thank you 😃
 
 
 Meta
