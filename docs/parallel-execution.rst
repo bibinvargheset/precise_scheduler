@@ -37,7 +37,7 @@ If you want tighter control on the number of threads use a shared jobqueue and o
 
     import time
     import threading
-    import schedule
+    import precise-scheduler
     import queue
 
     def job():

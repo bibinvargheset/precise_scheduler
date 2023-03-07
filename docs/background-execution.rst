@@ -10,7 +10,7 @@ This is an example of how you could do this:
     import threading
     import time
 
-    import schedule
+    import precise-scheduler
 
 
     def run_continuously(interval=1):
@@ -52,5 +52,3 @@ This is an example of how you could do this:
 
     # Stop the background thread
     stop_run_continuously.set()
-
-

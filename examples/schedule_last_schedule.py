@@ -1,10 +1,10 @@
 import datetime
 
-import schedule
+import precise_scheduler
 import time
 import pause
 
-scheduler = schedule.Scheduler(schedule_base="last_schedule")
+scheduler = precise_scheduler.Scheduler(schedule_base="last_schedule")
 
 
 def greet(name):
@@ -15,7 +15,7 @@ def greet(name):
 scheduler.every(2).seconds.do(greet, name="Alice")
 scheduler.every(4).seconds.do(greet, name="Bob")
 
-from schedule import every, repeat
+from precise_scheduler import every, repeat
 
 
 @repeat(scheduler.every(5).seconds, "World")
