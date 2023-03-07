@@ -1,7 +1,7 @@
 Reference
 =========
 
-.. module:: schedule
+.. module:: precise_scheduler
 
 This part of the documentation covers all the interfaces of schedule.
 
@@ -24,11 +24,11 @@ Main Interface
 Classes
 -------
 
-.. autoclass:: schedule.Scheduler
+.. autoclass:: precise_scheduler.Scheduler
    :members:
    :undoc-members:
 
-.. autoclass:: schedule.Job
+.. autoclass:: precise_scheduler.Job
    :members:
    :undoc-members:
 
@@ -36,4 +36,4 @@ Classes
 Exceptions
 ----------
 
-.. autoexception:: schedule.CancelJob
+.. autoexception:: precise_scheduler.CancelJob
