@@ -8,6 +8,7 @@ Run a job every x minute
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. code-block:: python
+
         import pause
 
         import precise_scheduler
