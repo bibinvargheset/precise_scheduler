@@ -193,28 +193,6 @@ To remove all jobs from the scheduler, use ``precise_scheduler.clear()``
         # [Every 1 second do greet(name='Harry') (last run: 2023-03-07 14:12:51, next run: 2023-03-07 14:12:52), Every 2 seconds do greet(name='Alice') (last run: 2023-03-07 14:12:51, next run: 2023-03-07 14:12:53), Every 1 minute do greet(name='Bob') (last run: 2023-03-07 14:12:51, next run: 2023-03-07 14:13:51), Every 1 hour do greet(name='Sam') (last run: 2023-03-07 14:12:51, next run: 2023-03-07 15:12:51)]
         # []
 
-Get several jobs, filtered by tags
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-You can retrieve a group of jobs from the scheduler, selecting them by a unique identifier.
-
-.. code-block:: python
-
-    import precise_scheduler
-
-    def greet(name):
-        print('Hello {}'.format(name))
-
-    precise_scheduler.every().day.do(greet, 'Andrea').tag('daily-tasks', 'friend')
-    precise_scheduler.every().hour.do(greet, 'John').tag('hourly-tasks', 'friend')
-    precise_scheduler.every().hour.do(greet, 'Monica').tag('hourly-tasks', 'customer')
-    precise_scheduler.every().day.do(greet, 'Derek').tag('daily-tasks', 'guest')
-
-    friends = precise_scheduler.get_jobs('friend')
-    print(friends)
-
-Will return a list of every job tagged as ``friend``.
-
 
 Cancel several jobs, filtered by tags
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
