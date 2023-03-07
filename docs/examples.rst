@@ -123,6 +123,7 @@ Run a job once
 Return ``precise_scheduler.CancelJob`` from a job to remove it from the scheduler.
 
 .. code-block:: python
+
         import datetime
 
         import pause
