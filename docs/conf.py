@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 #
-# schedule documentation build configuration file, created by
+# precise_scheduler documentation build configuration file, created by
 # sphinx-quickstart on Mon Nov  7 15:14:48 2016.
 #
 # This file is execfile()d with the current directory set to its
@@ -16,7 +16,7 @@
 # add these directories to sys.path here. If the directory is relative to the
 # documentation root, use os.path.abspath to make it absolute, like shown here.
 #
-# (schedule modules lives up one level from docs/)
+# (precise_scheduler modules lives up one level from docs/)
 #
 import os
 import sys
@@ -150,7 +150,7 @@ html_theme_options = {
 # The name for this set of Sphinx documents.
 # "<project> v<release> documentation" by default.
 #
-# html_title = u'schedule v0.4.0'
+# html_title = u'precise_scheduler v0.4.0'
 
 # A shorter title for the navigation bar.  Default is the same as html_title.
 #
@@ -258,7 +258,7 @@ html_show_copyright = True
 # html_search_scorer = 'scorer.js'
 
 # Output file base name for HTML help builder.
-htmlhelp_basename = "scheduledoc"
+htmlhelp_basename = "precise_schedulerdoc"
 
 # -- Options for LaTeX output ---------------------------------------------
 
@@ -283,8 +283,8 @@ latex_elements = {
 latex_documents = [
     (
         master_doc,
-        "schedule.tex",
-        "schedule Documentation",
+        "precise_scheduler.tex",
+        "precise_scheduler Documentation",
         "Bibin Varghese",
         "manual",
     ),
@@ -327,7 +327,9 @@ latex_documents = [
 
 # One entry per manual page. List of tuples
 # (source start file, name, description, authors, manual section).
-man_pages = [(master_doc, "schedule", "schedule Documentation", [author], 1)]
+man_pages = [
+    (master_doc, "precise_scheduler", "precise_scheduler Documentation", [author], 1)
+]
 
 # If true, show URL addresses after external links.
 #
@@ -342,10 +344,10 @@ man_pages = [(master_doc, "schedule", "schedule Documentation", [author], 1)]
 texinfo_documents = [
     (
         master_doc,
-        "schedule",
-        "schedule Documentation",
+        "precise_scheduler",
+        "precise_scheduler Documentation",
         author,
-        "schedule",
+        "precise_scheduler",
         "One line description of project.",
         "Miscellaneous",
     ),
