@@ -50,6 +50,7 @@ Run a job every x minute
         while True:
             pause.until(precise_scheduler.default_scheduler.get_next_run())
             precise_scheduler.run_pending()
+
 Use a decorator to schedule a job
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
