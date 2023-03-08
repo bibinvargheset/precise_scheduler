@@ -62,6 +62,54 @@ Usage
     # Hello World 2023-03-02 12:24:40.004778
     # Hello Alice 2023-03-02 12:24:41.000172
 
+Comparison with schedule
+_________________________
+
+This show how the old version (schedule ) drifts from the schedule on each execution and the new version is accurate to the schedule.
+
+The small microseconds shown in time is the time it takes to execute the print statement,
+call of function and slight difference of time.sleep(0.001) , which is common for both implementations
+
+.. code-block:: bash
+
+    $ pip install precise-scheduler
+    $ pip install schedule
+
+.. code-block:: python
+
+
+        import datetime
+        import precise_scheduler
+        import time
+        import schedule
+
+        scheduler = precise_scheduler.Scheduler(schedule_base="last_schedule")
+        schedule_old = schedule.Scheduler()
+
+
+        def greet(name):
+            print("Hello", name, datetime.datetime.now())
+            time.sleep(1)
+
+
+        scheduler.every(3).seconds.do(greet, name="precise_scheduler")
+        schedule_old.every(3).seconds.do(greet, name="schedule")
+
+        while True:
+
+            time.sleep(0.001)
+            scheduler.run_pending()
+            schedule_old.run_pending()
+
+
+
+    # Hello precise_scheduler 2023-03-08 11:16:42.000479
+    # Hello schedule 2023-03-08 11:16:43.001039
+    # Hello precise_scheduler 2023-03-08 11:16:45.000918
+    # Hello schedule 2023-03-08 11:16:47.002968
+    # Hello precise_scheduler 2023-03-08 11:16:48.004551
+    # Hello precise_scheduler 2023-03-08 11:16:51.000129
+    # Hello schedule 2023-03-08 11:16:52.001413
 
 Background
 ----------

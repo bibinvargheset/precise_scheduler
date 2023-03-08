@@ -22,10 +22,11 @@ from precise_scheduler import every, repeat
 @repeat(scheduler.every().day, "Mars")
 def hello(planet):
     print("Hello", planet, datetime.datetime.now())
-    time.sleep(0.5)
+    time.sleep(3)
 
 
 while True:
+    print(scheduler.get_next_run())
     pause.until(scheduler.get_next_run())
     scheduler.run_pending()
 
