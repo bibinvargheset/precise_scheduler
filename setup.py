@@ -2,7 +2,7 @@ import codecs
 from setuptools import setup
 
 
-precise_scheduler_VERSION = "2.0.0b"
+precise_scheduler_VERSION = "2.0.1b"
 # pyscheduler_DOWNLOAD_URL = (
 #     "https://github.com/dbader/pyscheduler/tarball/" + pyscheduler_VERSION
 # )

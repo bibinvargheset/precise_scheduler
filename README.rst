@@ -26,7 +26,7 @@ Usage
 
     scheduler = precise_scheduler.Scheduler(schedule_base="last_schedule")
     #scheduler = precise_scheduler.Scheduler(schedule_base="last_run_start")
-    #scheduler = precise_scheduler.Scheduler()
+    #scheduler = precise_scheduler.Scheduler() # default option  works simillar to schedule module
 
 
     def greet(name):
@@ -60,7 +60,23 @@ Usage
     # Hello Bob 2023-03-02 12:24:38.001703
     # Hello Alice 2023-03-02 12:24:39.003366
     # Hello World 2023-03-02 12:24:40.004778
-    # Hello Alice 2023-03-02 12:24:41.000172
+    # Hello Alice 2023-03-02 12:24:41.000172.
+
+Backwards compatibility
+________________________
+If the you want to use in simillar way as the you can use
+
+.. code-block:: python
+
+        import precise_scheduler as schedule
+
+only when you use change schedule base the behaviour changes.
+
+#scheduler = precise_scheduler.Scheduler(schedule_base="last_schedule")
+
+#scheduler = precise_scheduler.Scheduler(schedule_base="last_run_start")
+
+The precision part is by default and all schedules are truncated to  0 microseconds thus precise regardless of the schedule base
 
 Comparison with schedule
 _________________________
@@ -69,6 +85,7 @@ This test will show how the old module (schedule ) drifts from the schedule on e
 
 The small microseconds shown in time is the time it takes to execute the print statement,
 call of function and slight difference of time.sleep(0.001) , which is common for both implementations
+
 
 .. code-block:: bash
 
@@ -122,7 +139,7 @@ The changes are
 
 - All schedules will be truncated to 0 microseconds.
 
-- The code is updated to newer Pep requirements
+- The code is updated to newer Pep standards
 
 The  reason for starting this package is the above updates are really needed and the package has not being updated for long and is under MIT licence.
 
