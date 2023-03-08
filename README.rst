@@ -65,7 +65,7 @@ Usage
 Comparison with schedule
 _________________________
 
-This show how the old version (schedule ) drifts from the schedule on each execution and the new version is accurate to the schedule.
+This test will show how the old module (schedule ) drifts from the schedule on each execution and the new version is accurate to the schedule.
 
 The small microseconds shown in time is the time it takes to execute the print statement,
 call of function and slight difference of time.sleep(0.001) , which is common for both implementations
