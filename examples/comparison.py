@@ -16,7 +16,7 @@ def greet(name):
 scheduler.every(3).seconds.do(greet, name="precise_scheduler")
 schedule_old.every(3).seconds.do(greet, name="schedule")
 
-greet('start of test')
+greet("start of test")
 
 while True:
     time.sleep(0.001)

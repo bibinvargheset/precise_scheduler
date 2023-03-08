@@ -63,6 +63,23 @@ Usage
     # Hello World 2023-03-02 12:24:40.004778
     # Hello Alice 2023-03-02 12:24:41.000172
 
+Backwards compatibility
+________________________
+If the you want to use in simillar way as the you can use
+
+.. code-block:: python
+
+        import precise_scheduler as schedule
+
+only when you use change schedule base the behaviour changes.
+
+#scheduler = precise_scheduler.Scheduler(schedule_base="last_schedule")
+
+#scheduler = precise_scheduler.Scheduler(schedule_base="last_run_start")
+
+The precision part is by default and all schedules are truncated to  0 microseconds thus precise regardless of the schedule base
+
+
 Comparison with schedule
 _________________________
 
